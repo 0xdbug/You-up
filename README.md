@@ -1,7 +1,7 @@
 # You up?
-Solve math equations when your wake up.
+This is a simple tweak that provides math equations to solve when you wake up.
 
-Since this might be the first thing you will see when you wake up, I've added as much options/customization as i can.
+Depends on libsparkcolourpicker from Dynastic repo.
 
 # Screenshots
 
