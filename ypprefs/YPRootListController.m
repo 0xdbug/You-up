@@ -29,7 +29,7 @@
     if (self) {
         HBAppearanceSettings * appearanceSettings =
             [[HBAppearanceSettings alloc] init];
-        appearanceSettings.largeTitleStyle = HBAppearanceSettingsLargeTitleStyleNever;
+        //appearanceSettings.largeTitleStyle = HBAppearanceSettingsLargeTitleStyleNever;
         appearanceSettings.tableViewCellSeparatorColor = [UIColor clearColor];
         appearanceSettings.navigationBarTintColor = THEME_COLOR;
         appearanceSettings.navigationBarTitleColor = THEME_COLOR;

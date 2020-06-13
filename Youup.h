@@ -9,9 +9,11 @@
 @end
 @interface CSFullscreenNotificationViewController : CSModalViewControllerBase <UITextFieldDelegate>
 @property (nonatomic, weak) UIView * YPView;
-- (void) Check;
-- (void) _handlePrimaryAction;
+@property(strong, nonatomic) UIView *viewIfLoaded;
+- (void)Check;
+- (void)_handlePrimaryAction;
 @end
+
 
 UIButton * skipButton;
 UIView * YPView;
@@ -19,11 +21,14 @@ UITextField * YPField;
 NSInteger x;     // Solution
 // NSInteger numberOfTries = 0; //
 BOOL kEnabled;
+BOOL kDisablebuttons;
 BOOL kAddition;
 BOOL kSubtraction;
 BOOL kMultiplication;
 
 int kRange;
+
+//BOOL shouldLock; //should lock the lockbutton
 
 BOOL kCC;
 NSString * kBGS = NULL;    // Background hex/string

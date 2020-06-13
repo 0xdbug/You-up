@@ -31,6 +31,8 @@
                 <string>PSGroupCell</string>
                 <key>label</key>
                 <string></string>
+                <key>footerText</key>
+                <string>When enabled your access to power/volume buttons will be denied until you solve the equation.</string>
             </dict>
             <dict>
                 <key>cell</key>
@@ -43,6 +45,18 @@
                 <string>kEnabled</string>
                 <key>label</key>
                 <string>Enabled</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <true />
+                <key>defaults</key>
+                <string>cf.1di4r.ypprefs</string>
+                <key>key</key>
+                <string>kDisablebuttons</string>
+                <key>label</key>
+                <string>Disable Buttons</string>
             </dict>
             <dict>
                 <key>cell</key>
@@ -62,7 +76,7 @@
                 <key>min</key>
                 <real>5</real>
                 <key>max</key>
-                <real>100</real>
+                <real>200</real>
                 <key>showValue</key>
                 <true />
                 <key>isSegmented</key>

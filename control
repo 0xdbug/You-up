@@ -1,7 +1,7 @@
 Package: cf.1di4r.youup
 Name: You up?
 Depends: mobilesubstrate, ws.hbang.common (>= 1.11), com.spark.libsparkcolourpicker
-Version: 1.0
+Version: 1.5
 Architecture: iphoneos-arm
 Description: Making sure you won't fall asleep after alarm.
 Maintainer: 1di4r

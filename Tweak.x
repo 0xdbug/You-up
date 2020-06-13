@@ -10,8 +10,10 @@
 
 %group youup
 %hook CSFullscreenNotificationViewController
+
+
 -(void)loadView{
-		%orig;
+	%orig;
 	// DEBUG:
 	//NSLog(@"PASSED √");
 
@@ -170,16 +172,32 @@
 	[YPView addSubview:skipButton]; */
 
 	
+
 	
 }
 
+
 -(void)lockButtonPressed:(id)arg1 {
-	[self _handlePrimaryAction];
+
+//		NSLog(@"Youup - LockButton %@", arg1);
+
+		YPField.transform = CGAffineTransformMakeTranslation(20, 0);
+		[UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    	YPField.transform = CGAffineTransformIdentity;
+		} completion:nil];
+ 
 }
 
 -(void)volumeChanged:(id)arg1 {
-	[self _handlePrimaryAction];
+
+//	  	NSLog(@"Youup - VolumeButton %@", arg1);
+
+		YPField.transform = CGAffineTransformMakeTranslation(20, 0);
+		[UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    	YPField.transform = CGAffineTransformIdentity;
+		} completion:nil];
 }
+
 
 %new
 -(void)Check{
@@ -204,7 +222,7 @@
 	}
 }
 
-%new
+/*%new
 -(void)Skip{
 
 //	https://developer.apple.com/documentation/uikit/uiview/1622515-animatewithduration
@@ -214,6 +232,7 @@
 		}];	
 }
 
+*/
 
 %new
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -229,10 +248,48 @@
 -(void)dismissKeyboard {
     [YPField resignFirstResponder];
 }
+
 %end
+
+%end
+
+%group DisableButtons
+//MARK: headache
+%hook SBLockHardwareButton
+-(void)singlePress:(id)arg1{
+	if (YPView.superview){
+		// Do nothing.
+		}else{
+			%orig;
+	}
+			
+}
+
+%end
+
+%hook SBVolumeHardwareButton
+- (void)volumeIncreasePress:(id)arg1{
+	if (YPView.superview){
+			// Do nothing.
+		}else{
+			%orig;
+	}
+			
+}
+- (void)volumeDecreasePress:(id)arg1{
+	if (YPView.superview){
+			// Do nothing.
+		}else{
+			%orig;
+	}
+}
+%end
+%end
+
 static void prefChanged() {
 	HBPreferences *prefs = [[HBPreferences alloc] initWithIdentifier:@"cf.1di4r.ypprefs"];
     kEnabled = [([prefs objectForKey:@"kEnabled"] ?: @(YES)) boolValue];
+    kDisablebuttons = [([prefs objectForKey:@"kDisablebuttons"] ?: @(YES)) boolValue];
 	kAddition = [([prefs objectForKey:@"kAddition"] ?: @(YES)) boolValue];
 	kSubtraction = [([prefs objectForKey:@"kSubtraction"] ?: @(YES)) boolValue];
 	kMultiplication = [([prefs objectForKey:@"kMultiplication"] ?: @(YES)) boolValue];
@@ -256,8 +313,8 @@ static void prefChanged() {
 	prefChanged();
 	if (kEnabled){
 		%init(youup);
+		if (kDisablebuttons){
+			%init(DisableButtons);
+		}
 	}
 }
-
-
-%end
