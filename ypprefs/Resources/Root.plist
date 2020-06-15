@@ -232,7 +232,7 @@
                 <key>cell</key>
                 <string>PSGroupCell</string>
                 <key>label</key>
-                <string>Othe links</string>
+                <string>Other links</string>
             </dict>
             <dict>
                 <key>cell</key>
