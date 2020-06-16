@@ -11,4 +11,4 @@ Since this might be the first thing you will see when you wake up, I've added as
 
 <b>Compatible with iOS 13</b>
 
-available at: [OpenPack](https://repo.openpack.io)
+available at: ~~[OpenPack](https://repo.openpack.io)~~ [Twickd](https://repo.twickd.com/package/com.twickd.1di4r.you-up)
