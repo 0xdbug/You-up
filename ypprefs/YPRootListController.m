@@ -33,7 +33,7 @@
         appearanceSettings.tableViewCellSeparatorColor = [UIColor clearColor];
         appearanceSettings.navigationBarTintColor = THEME_COLOR;
         appearanceSettings.navigationBarTitleColor = THEME_COLOR;
-        appearanceSettings.statusBarTintColor = [UIColor whiteColor];
+        // appearanceSettings.statusBarTintColor = [UIColor whiteColor];
         appearanceSettings.tintColor = THEME_COLOR;
         appearanceSettings.navigationBarBackgroundColor = NAVBG_COLOR;
 

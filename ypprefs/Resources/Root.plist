@@ -9,7 +9,7 @@
                 <key>headerCellClass</key>
                 <string>HBPackageNameHeaderCell</string>
                 <key>packageIdentifier</key>
-                <string>cf.1di4r.youup</string>
+                <string>com.twickd.1di4r.you-up</string>
                 <key>backgroundGradientColors</key>
                 <array>
                     <string>#56A288</string>

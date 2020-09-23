@@ -2,7 +2,7 @@ ARCHS = arm64 arm64e
 
 include $(THEOS)/makefiles/common.mk
 
-SYSROOT = $(THEOS)/sdks/iPhoneOS12.1.sdk
+SYSROOT = $(THEOS)/sdks/iPhoneOS13.4.sdk
 
 BUNDLE_NAME = YPPrefs
 

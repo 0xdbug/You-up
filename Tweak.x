@@ -251,6 +251,30 @@
 
 %end
 
+/*
+   * AutoUnlockX compatibility
+*/
+
+%hook SparkAutoUnlockX
+-(BOOL)externalBlocksUnlock {
+    if (YPView.superview) return TRUE;
+    return %orig;
+}
+%end
+
+/*
+   * Rofi compatibility
+*/
+
+%hook RFViewController
+-(id)view{
+	if (YPView.superview) return nil;
+	return %orig;
+}
+
+
+%end
+
 %end
 
 %group DisableButtons

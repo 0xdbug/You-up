@@ -8,7 +8,7 @@ TWEAK_NAME = Youup
 
 Youup_FILES = Tweak.x
 Youup_CFLAGS = -fobjc-arc
-Youup_LIBRARIES += sparkcolourpicker
+Youup_LIBRARIES = sparkcolourpicker
 Youup_EXTRA_FRAMEWORKS += Cephei
 
 
