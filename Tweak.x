@@ -73,7 +73,7 @@
 		[s addObject:@"/"];
 	}
 	if ([s count] == 0) {
-		[s addObjects:@"+", @"-", @"*", @"/", NULL];
+		[s addObjectsFromArray:@[@"+", @"-", @"*", @"/"]];
 	}
 	uint32_t rnd = arc4random_uniform([s count]);
 	NSString *randomS = [s objectAtIndex:rnd];
