@@ -23,6 +23,7 @@ NSInteger x;     // Solution
 BOOL kEnabled;
 BOOL kDisablebuttons;
 BOOL kAddition;
+BOOL kDivision;
 BOOL kSubtraction;
 BOOL kMultiplication;
 

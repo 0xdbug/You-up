@@ -18,10 +18,12 @@
 	//NSLog(@"PASSED √");
 
 	// You up - Custom View:
-	YPView = [[UIView alloc] initWithFrame:CGRectMake(0,
-															 0,
-															 [[UIScreen mainScreen] bounds].size.width,
-															 [[UIScreen mainScreen] bounds].size.height)];
+	YPView = [[UIView alloc] initWithFrame:CGRectMake(
+		0,
+		0,
+		[[UIScreen mainScreen] bounds].size.width,
+		[[UIScreen mainScreen] bounds].size.height
+	)];
 	[self.view addSubview:YPView];
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
 	[YPView addGestureRecognizer:tap];
@@ -36,35 +38,28 @@
 		UIColor *selectedBG = [SparkColourPickerUtils colourWithString: kBGS withFallback: @"#ecf0f1"];
 		[YPView setBackgroundColor:selectedBG];
 	}
-
 	
-
-
-
-
-
-
 	// CurrentTime:
 	NSDate *date = [NSDate date];
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		[dateFormatter setDateFormat:@"h:mm"];
+	[dateFormatter setDateFormat:@"h:mm"];
 	NSString *dateString = [dateFormatter stringFromDate:date];
 	UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 210, 60)];
-		 dateLabel.font = [UIFont systemFontOfSize:80];
-		if (!kCC){
-			dateLabel.textColor = [UIColor whiteColor];
-		}else{
-			UIColor *selectedCK = [SparkColourPickerUtils colourWithString: kCKS withFallback: @"#bdc3c7"];
-			dateLabel.textColor = selectedCK;
-		}
-		dateLabel.textAlignment = NSTextAlignmentCenter;
-		[dateLabel setCenter:CGPointMake(self.view.center.x, 155)];
+	dateLabel.font = [UIFont systemFontOfSize:80];
+	if (!kCC){
+		dateLabel.textColor = [UIColor whiteColor];
+	}else{
+		UIColor *selectedCK = [SparkColourPickerUtils colourWithString: kCKS withFallback: @"#bdc3c7"];
+		dateLabel.textColor = selectedCK;
+	}
+	dateLabel.textAlignment = NSTextAlignmentCenter;
+	[dateLabel setCenter:CGPointMake(self.view.center.x, 155)];
 	[dateLabel setText:dateString];
 	[YPView addSubview:dateLabel];
 	
 
 	// Setting Up the Equation:
-	NSMutableArray *s = [[NSMutableArray alloc]init]; // Symbols
+	NSMutableArray *s = [NSMutableArray new]; // Symbols
 	if (kAddition) {
 		[s addObject:@"+"];
 	}
@@ -74,37 +69,44 @@
 	if (kMultiplication){
 		[s addObject:@"*"];
 	}
-	else{
-		[s addObjectsFromArray:@[@"+",@"-", @"*"]];
+	if (kDivision) {
+		[s addObject:@"/"];
+	}
+	if ([s count] == 0) {
+		[s addObjects:@"+", @"-", @"*", @"/", NULL];
 	}
 	uint32_t rnd = arc4random_uniform([s count]);
 	NSString *randomS = [s objectAtIndex:rnd];
 
-	NSInteger randomNumberA = 0 + arc4random() % (kRange - 0); 
-	NSInteger randomNumberB = 0 + arc4random() % (kRange - 0); 
+	NSInteger randomNumberA = arc4random_uniform(kRange); 
+	NSInteger randomNumberB = arc4random_uniform(kRange);
 
-	
-	NSString *aNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberA];
-	NSString *bNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberB];
-
+	if ([randomS isEqualToString:@"/"]) {
+		if (randomNumberB == 0) randomNumberB = 1 + arc4random_uniform(kRange);
+		randomNumberA *= randomNumberB;
+	}
 
 	if ([randomS isEqual: @"-"]){
 		if (randomNumberA < randomNumberB){
-			   x = (randomNumberB - randomNumberA);
-			aNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberB];
-			   bNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberA];
+			x = (randomNumberB - randomNumberA);
+			NSInteger temp = randomNumberB;
+			randomNumberB = randomNumberA;
+			randomNumberA = temp;
 		}else{
 			x = (randomNumberA - randomNumberB);
 		}
 	}
-	if ([randomS isEqual: @"+"]){
-		   x = (randomNumberA + randomNumberB);
+	else if ([randomS isEqual: @"+"]){
+		x = (randomNumberA + randomNumberB);
 	}
-	if ([randomS isEqual: @"*"]){
-		   x = (randomNumberA * randomNumberB);
+	else if ([randomS isEqual: @"*"]){
+		x = (randomNumberA * randomNumberB);
+	}
+	else if ([randomS isEqual:@"/"]) {
+		x = (randomNumberA / randomNumberB);
 	}
 
-	NSString *Equation = [NSString stringWithFormat: @"%@ %@ %@ = ?", aNumberString, randomS, bNumberString];
+	NSString *Equation = [NSString stringWithFormat: @"%ld %@ %ld = ?", randomNumberA, randomS, randomNumberB];
 
 	// DEBUG:
 /*	UILabel *qLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
@@ -123,40 +125,40 @@
 	YPField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 295.0, 38.0)];
 		
 	//	[YPField setPlaceholder: [NSString stringWithFormat: @"%@", Equation]];
-		YPField.layer.cornerRadius = 8;
-		YPField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-		YPField.textAlignment = NSTextAlignmentCenter;
+	YPField.layer.cornerRadius = 8;
+	YPField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	YPField.textAlignment = NSTextAlignmentCenter;
 
 	//  https://developer.apple.com/documentation/uikit/uitextfield/1619610-attributedplaceholder?language=objc
-		UIColor *placeholderColor = [UIColor whiteColor];
-		YPField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat: @"%@", Equation] attributes:@{NSForegroundColorAttributeName: placeholderColor}];
-		if (!kCC){
-			[YPField setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
-		}else{
-			UIColor *selectedTF = [SparkColourPickerUtils colourWithString: kTFS withFallback: @"#bdc3c7"];
-			[YPField setBackgroundColor: selectedTF];
-		}
-		[YPField setText: nil];
-		
-		YPField.textColor = [UIColor whiteColor];
-		[YPField setDelegate:self];
-		[YPField setCenter:CGPointMake(self.view.center.x, 325)];
+	UIColor *placeholderColor = [UIColor whiteColor];
+	YPField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat: @"%@", Equation] attributes:@{NSForegroundColorAttributeName: placeholderColor}];
+	if (!kCC){
+		[YPField setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
+	}else{
+		UIColor *selectedTF = [SparkColourPickerUtils colourWithString: kTFS withFallback: @"#bdc3c7"];
+		[YPField setBackgroundColor: selectedTF];
+	}
+	[YPField setText: nil];
+	
+	YPField.textColor = [UIColor whiteColor];
+	[YPField setDelegate:self];
+	[YPField setCenter:CGPointMake(self.view.center.x, 325)];
 	[YPView addSubview:YPField];
 	
 
 	// Done Button:
 	UIButton *checkButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240.0, 50.0)];
-		[checkButton addTarget:self action:@selector(Check)
-		 forControlEvents:UIControlEventTouchUpInside];
-		[checkButton setTitle:@"Done" forState:UIControlStateNormal];
-		if(!kCC){
-			[checkButton setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
-		}else{
-			UIColor *selectedBTN = [SparkColourPickerUtils colourWithString: kBTNS withFallback: @"#bdc3c7"];
-			[checkButton setBackgroundColor: selectedBTN];
-		}
-		[checkButton setCenter:CGPointMake(self.view.center.x, 465)];
-		checkButton.layer.cornerRadius = 12;
+	[checkButton addTarget:self action:@selector(Check)
+		forControlEvents:UIControlEventTouchUpInside];
+	[checkButton setTitle:@"Done" forState:UIControlStateNormal];
+	if(!kCC){
+		[checkButton setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
+	}else{
+		UIColor *selectedBTN = [SparkColourPickerUtils colourWithString: kBTNS withFallback: @"#bdc3c7"];
+		[checkButton setBackgroundColor: selectedBTN];
+	}
+	[checkButton setCenter:CGPointMake(self.view.center.x, 465)];
+	checkButton.layer.cornerRadius = 12;
 	[YPView addSubview:checkButton];
 
 	// Skip button - NOT RELEASED:
@@ -169,11 +171,7 @@
 		[skipButton setCenter:CGPointMake(self.view.center.x, 495)];
 		skipButton.layer.cornerRadius = 12;
 		[skipButton setHidden:YES]; 
-	[YPView addSubview:skipButton]; */
-
-	
-
-	
+	[YPView addSubview:skipButton]; */	
 }
 
 
@@ -315,6 +313,7 @@ static void prefChanged() {
 	kEnabled = [([prefs objectForKey:@"kEnabled"] ?: @(YES)) boolValue];
 	kDisablebuttons = [([prefs objectForKey:@"kDisablebuttons"] ?: @(YES)) boolValue];
 	kAddition = [([prefs objectForKey:@"kAddition"] ?: @(YES)) boolValue];
+	kDivision = [([prefs objectForKey:@"kDivision"] ?: @(YES)) boolValue];
 	kSubtraction = [([prefs objectForKey:@"kSubtraction"] ?: @(YES)) boolValue];
 	kMultiplication = [([prefs objectForKey:@"kMultiplication"] ?: @(YES)) boolValue];
 	kRange = [([prefs objectForKey:@"kRange"] ?: @(5)) intValue];
