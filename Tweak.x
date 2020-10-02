@@ -81,11 +81,6 @@
 	NSInteger randomNumberA = arc4random_uniform(kRange); 
 	NSInteger randomNumberB = arc4random_uniform(kRange);
 
-	if ([randomS isEqualToString:@"/"]) {
-		if (randomNumberB == 0) randomNumberB = 1 + arc4random_uniform(kRange);
-		randomNumberA *= randomNumberB;
-	}
-
 	if ([randomS isEqual: @"-"]){
 		if (randomNumberA < randomNumberB){
 			x = (randomNumberB - randomNumberA);
@@ -103,6 +98,8 @@
 		x = (randomNumberA * randomNumberB);
 	}
 	else if ([randomS isEqual:@"/"]) {
+		if (randomNumberB == 0) randomNumberB = 1 + arc4random_uniform(kRange);
+		randomNumberA *= randomNumberB;
 		x = (randomNumberA / randomNumberB);
 	}
 
