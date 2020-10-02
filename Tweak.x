@@ -19,21 +19,21 @@
 
 	// You up - Custom View:
 	YPView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                             0,
-                                                             [[UIScreen mainScreen] bounds].size.width,
-                                                             [[UIScreen mainScreen] bounds].size.height)];
+															 0,
+															 [[UIScreen mainScreen] bounds].size.width,
+															 [[UIScreen mainScreen] bounds].size.height)];
 	[self.view addSubview:YPView];
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
 	[YPView addGestureRecognizer:tap];
 
-    // BlurEffect:
+	// BlurEffect:
 	if (!kCC){
 		UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
 			UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-			    visualEffectView.frame = YPView.bounds; 
+				visualEffectView.frame = YPView.bounds; 
 		[YPView addSubview:visualEffectView];
 	}else{
-    	UIColor *selectedBG = [SparkColourPickerUtils colourWithString: kBGS withFallback: @"#ecf0f1"];
+		UIColor *selectedBG = [SparkColourPickerUtils colourWithString: kBGS withFallback: @"#ecf0f1"];
 		[YPView setBackgroundColor:selectedBG];
 	}
 
@@ -50,7 +50,7 @@
 		[dateFormatter setDateFormat:@"h:mm"];
 	NSString *dateString = [dateFormatter stringFromDate:date];
 	UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 210, 60)];
-	 	dateLabel.font = [UIFont systemFontOfSize:80];
+		 dateLabel.font = [UIFont systemFontOfSize:80];
 		if (!kCC){
 			dateLabel.textColor = [UIColor whiteColor];
 		}else{
@@ -59,8 +59,8 @@
 		}
 		dateLabel.textAlignment = NSTextAlignmentCenter;
 		[dateLabel setCenter:CGPointMake(self.view.center.x, 155)];
-    [dateLabel setText:dateString];
-    [YPView addSubview:dateLabel];
+	[dateLabel setText:dateString];
+	[YPView addSubview:dateLabel];
 	
 
 	// Setting Up the Equation:
@@ -80,33 +80,33 @@
 	uint32_t rnd = arc4random_uniform([s count]);
 	NSString *randomS = [s objectAtIndex:rnd];
 
-    NSInteger randomNumberA = 0 + arc4random() % (kRange - 0); 
+	NSInteger randomNumberA = 0 + arc4random() % (kRange - 0); 
 	NSInteger randomNumberB = 0 + arc4random() % (kRange - 0); 
 
-    
-    NSString *aNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberA];
-    NSString *bNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberB];
+	
+	NSString *aNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberA];
+	NSString *bNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberB];
 
 
-    if ([randomS isEqual: @"-"]){
+	if ([randomS isEqual: @"-"]){
 		if (randomNumberA < randomNumberB){
-   			x = (randomNumberB - randomNumberA);
+			   x = (randomNumberB - randomNumberA);
 			aNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberB];
-   			bNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberA];
+			   bNumberString = [NSString stringWithFormat: @"%ld", (long)randomNumberA];
 		}else{
 			x = (randomNumberA - randomNumberB);
 		}
-    }
-    if ([randomS isEqual: @"+"]){
-   		x = (randomNumberA + randomNumberB);
-    }
-    if ([randomS isEqual: @"*"]){
-   		x = (randomNumberA * randomNumberB);
-    }
+	}
+	if ([randomS isEqual: @"+"]){
+		   x = (randomNumberA + randomNumberB);
+	}
+	if ([randomS isEqual: @"*"]){
+		   x = (randomNumberA * randomNumberB);
+	}
 
 	NSString *Equation = [NSString stringWithFormat: @"%@ %@ %@ = ?", aNumberString, randomS, bNumberString];
 
-    // DEBUG:
+	// DEBUG:
 /*	UILabel *qLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
 		qLabel.font = [UIFont systemFontOfSize:25];
 		qLabel.textColor = [UIColor whiteColor];
@@ -116,10 +116,10 @@
 	//[qLabel setText:[NSString stringWithFormat: @"%@", Equation]];
 	[qLabel setText:[NSString stringWithFormat: @"%@", kBGS]]; 
 
-    [YPView addSubview:qLabel];
+	[YPView addSubview:qLabel];
 	[qLabel sizeToFit];	 */
 
-    // TextField:
+	// TextField:
 	YPField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 295.0, 38.0)];
 		
 	//	[YPField setPlaceholder: [NSString stringWithFormat: @"%@", Equation]];
@@ -128,15 +128,15 @@
 		YPField.textAlignment = NSTextAlignmentCenter;
 
 	//  https://developer.apple.com/documentation/uikit/uitextfield/1619610-attributedplaceholder?language=objc
-	    UIColor *placeholderColor = [UIColor whiteColor];
-	    YPField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat: @"%@", Equation] attributes:@{NSForegroundColorAttributeName: placeholderColor}];
+		UIColor *placeholderColor = [UIColor whiteColor];
+		YPField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat: @"%@", Equation] attributes:@{NSForegroundColorAttributeName: placeholderColor}];
 		if (!kCC){
-    		[YPField setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
+			[YPField setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
 		}else{
 			UIColor *selectedTF = [SparkColourPickerUtils colourWithString: kTFS withFallback: @"#bdc3c7"];
 			[YPField setBackgroundColor: selectedTF];
 		}
-    	[YPField setText: nil];
+		[YPField setText: nil];
 		
 		YPField.textColor = [UIColor whiteColor];
 		[YPField setDelegate:self];
@@ -144,13 +144,13 @@
 	[YPView addSubview:YPField];
 	
 
-    // Done Button:
+	// Done Button:
 	UIButton *checkButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240.0, 50.0)];
 		[checkButton addTarget:self action:@selector(Check)
- 		forControlEvents:UIControlEventTouchUpInside];
+		 forControlEvents:UIControlEventTouchUpInside];
 		[checkButton setTitle:@"Done" forState:UIControlStateNormal];
 		if(!kCC){
-	    	[checkButton setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
+			[checkButton setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
 		}else{
 			UIColor *selectedBTN = [SparkColourPickerUtils colourWithString: kBTNS withFallback: @"#bdc3c7"];
 			[checkButton setBackgroundColor: selectedBTN];
@@ -163,9 +163,9 @@
 
 	/* UIButton *skipButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 240.0, 50.0)];
 		[skipButton addTarget:self action:@selector(Skip)
- 		forControlEvents:UIControlEventTouchUpInside];
+		 forControlEvents:UIControlEventTouchUpInside];
 		[skipButton setTitle:@"Skip" forState:UIControlStateNormal];
-	    [skipButton setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
+		[skipButton setBackgroundColor: [[UIColor clearColor] colorWithAlphaComponent:0.5]];
 		[skipButton setCenter:CGPointMake(self.view.center.x, 495)];
 		skipButton.layer.cornerRadius = 12;
 		[skipButton setHidden:YES]; 
@@ -183,7 +183,7 @@
 
 		YPField.transform = CGAffineTransformMakeTranslation(20, 0);
 		[UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-    	YPField.transform = CGAffineTransformIdentity;
+		YPField.transform = CGAffineTransformIdentity;
 		} completion:nil];
  
 }
@@ -194,7 +194,7 @@
 
 		YPField.transform = CGAffineTransformMakeTranslation(20, 0);
 		[UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-    	YPField.transform = CGAffineTransformIdentity;
+		YPField.transform = CGAffineTransformIdentity;
 		} completion:nil];
 }
 
@@ -209,15 +209,15 @@
 // 	https://developer.apple.com/documentation/uikit/uiview/1622515-animatewithduration
 	if ([NSString stringWithFormat: @"%ld", (long)x] == YPField.text){
 	[UIView animateWithDuration:0.2
-     	animations:^{YPView.alpha = 0.0;}
-     	completion:^(BOOL finished){ [YPView removeFromSuperview]; 
+		 animations:^{YPView.alpha = 0.0;}
+		 completion:^(BOOL finished){ [YPView removeFromSuperview]; 
 	}];
 	}else{
 		//numberOfTries++;
 
 		YPField.transform = CGAffineTransformMakeTranslation(20, 0);
 		[UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.2 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-    	YPField.transform = CGAffineTransformIdentity;
+		YPField.transform = CGAffineTransformIdentity;
 		} completion:nil];
 	}
 }
@@ -227,8 +227,8 @@
 
 //	https://developer.apple.com/documentation/uikit/uiview/1622515-animatewithduration
 	[UIView animateWithDuration:0.2
- 		animations:^{YPView.alpha = 0.0;}
-     	completion:^(BOOL finished){ [YPView removeFromSuperview]; 
+		 animations:^{YPView.alpha = 0.0;}
+		 completion:^(BOOL finished){ [YPView removeFromSuperview]; 
 		}];	
 }
 
@@ -236,17 +236,17 @@
 
 %new
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
+	[textField resignFirstResponder];
 /*	if (YPField.text != ""){
 		[self Check];
 	}
- 	*/
-    return YES;
+	 */
+	return YES;
 }
 
 %new
 -(void)dismissKeyboard {
-    [YPField resignFirstResponder];
+	[YPField resignFirstResponder];
 }
 
 %end
@@ -257,8 +257,8 @@
 
 %hook SparkAutoUnlockX
 -(BOOL)externalBlocksUnlock {
-    if (YPView.superview) return TRUE;
-    return %orig;
+	if (YPView.superview) return TRUE;
+	return %orig;
 }
 %end
 
@@ -312,8 +312,8 @@
 
 static void prefChanged() {
 	HBPreferences *prefs = [[HBPreferences alloc] initWithIdentifier:@"cf.1di4r.ypprefs"];
-    kEnabled = [([prefs objectForKey:@"kEnabled"] ?: @(YES)) boolValue];
-    kDisablebuttons = [([prefs objectForKey:@"kDisablebuttons"] ?: @(YES)) boolValue];
+	kEnabled = [([prefs objectForKey:@"kEnabled"] ?: @(YES)) boolValue];
+	kDisablebuttons = [([prefs objectForKey:@"kDisablebuttons"] ?: @(YES)) boolValue];
 	kAddition = [([prefs objectForKey:@"kAddition"] ?: @(YES)) boolValue];
 	kSubtraction = [([prefs objectForKey:@"kSubtraction"] ?: @(YES)) boolValue];
 	kMultiplication = [([prefs objectForKey:@"kMultiplication"] ?: @(YES)) boolValue];
@@ -325,8 +325,8 @@ static void prefChanged() {
 	// So i had to create a new Dictionary and then get the hex value
 	// Let me know if you know whats the problem ;)
 
-    NSDictionary *prefsDir = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/cf.1di4r.ypprefs.plist"];
-    kBGS = [prefsDir objectForKey: @"kBG"];
+	NSDictionary *prefsDir = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/cf.1di4r.ypprefs.plist"];
+	kBGS = [prefsDir objectForKey: @"kBG"];
 	kCKS = [prefsDir objectForKey: @"kCK"];
 	kTFS = [prefsDir objectForKey: @"kTF"];
 	kBTNS = [prefsDir objectForKey: @"kBTN"];

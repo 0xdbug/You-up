@@ -9,13 +9,12 @@
 
 @end
 
-#define THEME_COLOR                                                            \
-    [UIColor colorWithRed:53.0 / 255.0                                          \
-                    green:105.0 / 255.0                                          \
-                     blue:85.0 / 255.0                                          \
-                    alpha:1.0];
-#define NAVBG_COLOR                                                            \
-    [UIColor colorWithRed:86.0 / 255.0                                          \
-                    green:162.0 / 255.0                                          \
-                     blue:135.0 / 255.0                                          \
-                    alpha:1.0];
+#define UICOLOR_FROM_RGBA(r,g,b,a) \
+	[UIColor \
+		colorWithRed:((r) / 255.0) \
+		green:((g) / 255.0) \
+		blue:((b) / 255.0) \
+		alpha:(a) \
+	]
+#define THEME_COLOR UICOLOR_FROM_RGBA(53.0, 105.0, 85.0, 255.0)
+#define NAVBG_COLOR UICOLOR_FROM_RGBA(86.0, 162.0, 135.0, 255.0)
