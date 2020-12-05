@@ -10,7 +10,7 @@ YPPrefs_FILES = YPRootListController.m
 YPPrefs_INSTALL_PATH = /Library/PreferenceBundles
 YPPrefs_FRAMEWORKS = UIKit
 YPPrefs_PRIVATE_FRAMEWORKS = Preferences
-YPPrefs_LIBRARIES += sparkcolourpicker
+YPPrefs_LIBRARIES = colorpicker
 YPPrefs_EXTRA_FRAMEWORKS += Cephei CepheiPrefs
 YPPrefs_CFLAGS = -fobjc-arc
 
