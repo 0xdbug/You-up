@@ -9,7 +9,7 @@
 @interface CSModalViewControllerBase : CSCoverSheetViewControllerBase
 
 @end
-@interface CSMainPageContentViewController : CSModalViewControllerBase <UITextFieldDelegate>
+@interface CSFullscreenNotificationViewController : CSModalViewControllerBase <UITextFieldDelegate>
 @property (nonatomic, weak) UIView * YPView; // why is this here?
 @property(strong, nonatomic) UIView *viewIfLoaded; // and you?
 - (void)Skip;
