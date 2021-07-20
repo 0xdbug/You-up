@@ -4,7 +4,7 @@ Solve math equations before dismissing your alarm.
 
 # Screenshots
 
-<img src="https://github.com/1di4r/Youup/blob/master/Screenshots/ss1.png" height="300" style="max-width:100%;"><img src="https://github.com/1di4r/Youup/blob/master/Screenshots/ss2.png" height="300" style="max-width:100%;"><img src="https://github.com/1di4r/Youup/blob/master/Screenshots/ss3.png" height="300" style="max-width:100%;">
+<img src="https://github.com/1di4r/Youup/blob/master/Screenshots/ScreenShot.png" height="300" style="max-width:100%;"><img src="https://github.com/1di4r/Youup/blob/master/Screenshots/ScreenShot2.png" height="300" style="max-width:100%;"><img src="https://github.com/1di4r/Youup/blob/master/Screenshots/ScreenShot3.png" height="300" style="max-width:100%;">
 
 <hr>
 
