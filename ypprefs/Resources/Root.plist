@@ -6,15 +6,24 @@
             <dict>
                 <key>cell</key>
                 <string>PSGroupCell</string>
+                <key>condensed</key>
+                <true/>
                 <key>headerCellClass</key>
                 <string>HBPackageNameHeaderCell</string>
+                <key>icon</key>
+                <string>icon.png</string>
                 <key>packageIdentifier</key>
                 <string>com.twickd.1di4r.you-up</string>
-                <key>backgroundGradientColors</key>
-                <array>
-                    <string>#56A288</string>
-                    <string>#56A288</string>
-                </array>
+                <key>titleColor</key>
+                <string>#376955</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string></string>
+                <key>footerText</key>
+                <string></string>
             </dict>
             <!-- Twitter header -->
             <dict>
@@ -23,9 +32,12 @@
                 <key>cellClass</key>
                 <string>HBTwitterCell</string>
                 <key>label</key>
-                <string>Follow me on Twitter!</string>
+                <string>1di4r</string>
                 <key>user</key>
                 <string>1di4r</string>
+                <!-- cephei no worky -->
+				<key>iconURL</key>
+				<string>https://pbs.twimg.com/profile_images/1281615952812093441/cQ0bz8HH_400x400.jpg</string>
             </dict>
             <!-- Enable switch -->
             <dict>
@@ -39,6 +51,8 @@
                 <string>kEnabled</string>
                 <key>label</key>
                 <string>Enabled</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <dict>
                 <key>cell</key>
@@ -46,9 +60,9 @@
                 <key>label</key>
                 <string></string>
                 <key>footerText</key>
-                <string>When enabled your access to power/volume buttons will be denied until you solve the equation.</string>
+                <string>When enabled your access to power, volume and home buttons will be denied until you solve the equation.</string>
             </dict>
-            <!-- Disable Siri -->
+            <!-- Disable home Button -->
             <dict>
                 <key>cell</key>
                 <string>PSSwitchCell</string>
@@ -57,11 +71,13 @@
                 <key>defaults</key>
                 <string>cf.1di4r.ypprefs</string>
                 <key>key</key>
-                <string>kDisableSiri</string>
+                <string>kDisableHomeButton</string>
                 <key>label</key>
-                <string>Disable Siri</string>
+                <string>Disable HomeButton</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
-            <!-- Disable buttons -->
+            <!-- Disable side buttons -->
             <dict>
                 <key>cell</key>
                 <string>PSSwitchCell</string>
@@ -70,9 +86,11 @@
                 <key>defaults</key>
                 <string>cf.1di4r.ypprefs</string>
                 <key>key</key>
-                <string>kDisablebuttons</string>
+                <string>kDisableSideButtons</string>
                 <key>label</key>
-                <string>Disable Buttons</string>
+                <string>Disable SideButtons</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- Settings -->
             <dict>
@@ -99,6 +117,8 @@
                 <true />
                 <key>isSegmented</key>
                 <false />
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- Addition -->
             <dict>
@@ -112,6 +132,8 @@
                 <string>kAddition</string>
                 <key>label</key>
                 <string>Addition</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- Subtraction -->
             <dict>
@@ -125,6 +147,8 @@
                 <string>kSubtraction</string>
                 <key>label</key>
                 <string>Subtraction</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- Multiplication -->
             <dict>
@@ -138,6 +162,8 @@
                 <string>kMultiplication</string>
                 <key>label</key>
                 <string>Multiplication</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- Division (thx @pixelomar) -->
             <dict>
@@ -151,6 +177,8 @@
                 <string>kDivision</string>
                 <key>label</key>
                 <string>Division</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <dict>
 				<key>cell</key>
@@ -158,7 +186,7 @@
 				<key>label</key>
 				<string></string>
 				<key>footerText</key>
-				<string>Show a Skip Button after a certain amount of failed attempts.</string>
+				<string>Present a Skip Button after a certain amount of failed attempts.</string>
 			</dict>
             <!-- Skip button -->
             <dict>
@@ -172,6 +200,8 @@
 				<string>cf.1di4r.ypprefs</string>
 				<key>key</key>
 				<string>SkipBTNEnabled</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
 			</dict>
             <!-- FaildAttempts Stepper -->
             <dict>
@@ -191,6 +221,8 @@
                 <real>1</real>
                 <key>singularLabel</key>
                 <string>1 attempt</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <dict>
                 <key>cell</key>
@@ -212,6 +244,8 @@
                 <string>kCC</string>
                 <key>label</key>
                 <string>Custom Colors</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- Background -->
             <dict>
@@ -229,6 +263,8 @@
                 <true/>
                 <key>key</key>
                 <string>kBG</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- Time Label -->
             <dict>
@@ -246,6 +282,8 @@
                 <true/>
                 <key>key</key>
                 <string>kCK</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- TextFiled -->
             <dict>
@@ -256,13 +294,15 @@
                 <key>defaults</key>
                 <string>cf.1di4r.ypprefs</string>
                 <key>default</key>
-                <string>#ffffff</string>
+                <string>#333333</string>
                 <key>label</key>
                 <string>TextField</string>
                 <key>showAlphaSlider</key>
                 <true/>
                 <key>key</key>
                 <string>kTF</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
             <!-- Buttons -->
             <dict>
@@ -273,21 +313,23 @@
                 <key>defaults</key>
                 <string>cf.1di4r.ypprefs</string>
                 <key>default</key>
-                <string>#ffffff</string>
+                <string>#D38300</string>
                 <key>label</key>
                 <string>Button</string>
                 <key>showAlphaSlider</key>
                 <true/>
                 <key>key</key>
                 <string>kBTN</string>
+                <key>PostNotification</key>
+				<string>com.1di4r.youup/ReloadPrefs</string>
             </dict>
+            <!-- Respring Button -->
             <dict>
                 <key>cell</key>
                 <string>PSGroupCell</string>
-                <key>label</key>
-                <string></string>
+                <key>footerText</key>
+                <string>Resprings are NOT required to apply changes made.</string>
             </dict>
-            <!-- Respring Button -->
             <dict>
                 <key>cell</key>
                 <string>PSButtonCell</string>
@@ -296,7 +338,7 @@
                 <key>action</key>
                 <string>respring</string>
                 <key>label</key>
-                <string>Apply Changes</string>
+                <string>Respring</string>
             </dict>
             <!-- Links -->
             <dict>
@@ -319,7 +361,7 @@
                 <string>https://github.com/1di4r/Youup</string>
             </dict>
             <!-- Paypal -->
-            <dict>
+            <!-- <dict>
                 <key>cell</key>
                 <string>PSButtonCell</string>
                 <key>cellClass</key>
@@ -330,7 +372,7 @@
                 <string>Support the development</string>
                 <key>url</key>
                 <string>https://paypal.me/01di4r</string>
-            </dict>
+            </dict> -->
             <!-- Color picker -->
             <dict>
                 <key>cell</key>
@@ -338,11 +380,11 @@
                 <key>cellClass</key>
                 <string>HBLinkTableCell</string>
                 <key>label</key>
-                <string>ColorPicker</string>
+                <string>Alderis</string>
                 <key>subtitle</key>
-                <string>libSparkColourPicker</string>
+                <string>Color Picker</string>
                 <key>url</key>
-                <string>https://github.com/SparkDev97/libSparkColourPicker</string>
+                <string>https://github.com/hbang/Alderis</string>
             </dict>
             <!-- A Footer with a copyright symbol to make it more "Professional" -->
             <dict>
@@ -351,7 +393,7 @@
                 <key>footerAlignment</key>
                 <string>1</string>
                 <key>footerText</key>
-                <string>© 2020 1di4r</string>
+                <string>Enjoy</string>
             </dict>
         </array>
         <key>title</key>

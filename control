@@ -1,9 +1,9 @@
 Package: com.twickd.1di4r.you-up
 Name: You up?
-Depends: mobilesubstrate, ws.hbang.common (>= 1.11), ws.hbang.alderis
-Version: 1.6.7
+Depends: mobilesubstrate, ws.hbang.common (>= 1.11), ws.hbang.alderis (>= 1.1)
+Version: 1.7.1
 Architecture: iphoneos-arm
-Description: Making sure you won't fall asleep after alarm.
+Description: Solve math equations before dismissing your alarm.
 Maintainer: 1di4r
 Author: 1di4r
 Section: Tweaks

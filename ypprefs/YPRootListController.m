@@ -3,17 +3,16 @@
 
 @implementation YPRootListController
 
-- (void) viewDidLoad {
+- (void)viewDidLoad {
 	[super viewDidLoad];
 
 	if (@available(iOS 11, *)) {
 		self.navigationController.navigationBar.prefersLargeTitles = false;
-		self.navigationController.navigationItem.largeTitleDisplayMode =
-			UINavigationItemLargeTitleDisplayModeNever;
+		self.navigationController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
 	}
 }
 
-- (void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 
 	if (@available(iOS 11, *)) {
@@ -23,7 +22,7 @@
 	}
 }
 
-- (instancetype) init {
+- (instancetype)init {
 	self = [super init];
 
 	if (self) {
@@ -31,27 +30,23 @@
 			[[HBAppearanceSettings alloc] init];
 		//appearanceSettings.largeTitleStyle = HBAppearanceSettingsLargeTitleStyleNever;
 		appearanceSettings.tableViewCellSeparatorColor = [UIColor clearColor];
-		appearanceSettings.navigationBarTintColor = THEME_COLOR;
-		appearanceSettings.navigationBarTitleColor = THEME_COLOR;
+		// appearanceSettings.navigationBarTintColor = THEME_COLOR;
+		// appearanceSettings.navigationBarTitleColor = THEME_COLOR;
 		// appearanceSettings.statusBarTintColor = [UIColor whiteColor];
 		appearanceSettings.tintColor = THEME_COLOR;
-		appearanceSettings.navigationBarBackgroundColor = NAVBG_COLOR;
-
+		// appearanceSettings.navigationBarBackgroundColor = NAVBG_COLOR;
 		self.hb_appearanceSettings = appearanceSettings;
 	}
-
 	return self;
 }
 
-
-- (NSArray *) specifiers {
+- (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
 	}
-
 	return _specifiers;
 }
-- (void) respring {
+- (void)respring {
 	/*pid_t pid;
 	 * const char* args[] = {"killall", "backboardd", NULL};
 	 * posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL); */

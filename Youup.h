@@ -4,43 +4,56 @@
 #import <Cephei/HBPreferences.h>
 #import "libcolorpicker.h"
 
+@interface MTAAlarmEditViewController: UIViewController
+@property(strong, nonatomic) UITableView *settingsTable;
+@end
+
 @interface CSCoverSheetViewControllerBase : UIViewController
 @end
-@interface CSModalViewControllerBase : CSCoverSheetViewControllerBase
 
+@interface CSModalViewControllerBase : CSCoverSheetViewControllerBase
 @end
+
 @interface CSFullscreenNotificationViewController : CSModalViewControllerBase <UITextFieldDelegate>
-@property (nonatomic, weak) UIView * YPView; // why is this here?
-@property(strong, nonatomic) UIView *viewIfLoaded; // and you?
-- (void)Skip;
-- (void)Check;
--(void)showSkipBTN;
+@property (nonatomic, weak) UIView * YPView;
+@property(strong, nonatomic) UIView *viewIfLoaded;
+- (void)skip;
+- (void)check;
+- (void)showSkipBTN;
 - (void)_handlePrimaryAction;
 @end
 
-// the electricity went oof, so i decided to add some useless comments
+@interface SBHomeHardwareButton: NSObject
+- (void)disable;
+- (void)_createGestureRecognizersWithConfiguration:(id)arg1 ;
+@end
 
+@interface SBLockScreenManager : NSObject
+- (void)disable;
+- (void)enable;
+- (void)setBiometricAutoUnlockingDisabled:(BOOL)arg1 forReason:(id)arg2 ;
+@end
 
-UIButton * skipButton; // cool comment
-UIView * YPView; // vieewwwww
-UITextField * YPField; // u put answer here and magic
-NSInteger x;     // Solution or somthing idk math
-NSInteger numberOfTries = 0; // 
-BOOL Enabled; // literaly the first thing u use in the prefs
-BOOL Disablebuttons; // dont turn the alarm off plz
-BOOL DisableSiri; // who said using siri while there is an alarm is a good idea?
-BOOL Addition; // ez
-BOOL Subtraction; // ez
-BOOL Multiplication; // meh
-BOOL Division; // who likes Divisions anyways?
-BOOL SkipBTNEnabled; // dont know mathy math? pfffft
+UIButton * skipButton;
+UIView * YPView;
+UITextField * YPField;
+NSInteger x;
+NSInteger numberOfTries = 0;
+BOOL Enabled;
+BOOL DisableHomeButton;
+BOOL DisableSideButtons;
+BOOL Addition;
+BOOL Subtraction;
+BOOL Multiplication;
+BOOL Division;
+BOOL SkipBTNEnabled;
 
-int Range; // range more like rage haha, help
-int SAttempt; // counting your failures
+int Range;
+int SAttempt;
 
-BOOL CC; // Custom Colors?
+BOOL CC;
 
-NSString * BGS = NULL;    // Background hex/string
-NSString * CKS = NULL;    // Clock hex/string
-NSString * TFS = NULL;    // TextField hex/string
-NSString * BTNS = NULL;    // Button hex/string
+NSString * BGS = NULL;  // Background hex/string
+NSString * CKS = NULL;  // Clock hex/string
+NSString * TFS = NULL;  // TextField hex/string
+NSString * BTNS = NULL; // Button hex/string

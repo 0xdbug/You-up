@@ -6,8 +6,8 @@
 #import <spawn.h>
 
 @interface YPRootListController : HBRootListController
-
 @end
+
 // just copy pasted this
 #define UICOLOR_FROM_RGBA(r,g,b,a) \
 	[UIColor \
@@ -16,5 +16,6 @@
 		blue:((b) / 255.0) \
 		alpha:(a) \
 	]
+
 #define THEME_COLOR UICOLOR_FROM_RGBA(53.0, 105.0, 85.0, 255.0)
 #define NAVBG_COLOR UICOLOR_FROM_RGBA(86.0, 162.0, 135.0, 255.0)
