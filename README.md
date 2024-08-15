@@ -8,4 +8,6 @@ Solve math equations before dismissing your alarm.
 
 <hr>
 
-Available at: [Twickd](https://repo.twickd.com/get/com.twickd.1di4r.you-up)
+Downloads:
+[Rootless](https://github.com/htauk/You-up/raw/master/build/rootless.deb)
+[Rootful](https://github.com/htauk/You-up/raw/master/build/rootful.deb)
