@@ -9,5 +9,5 @@ Solve math equations before dismissing your alarm.
 <hr>
 
 Downloads:
-[Rootless](https://github.com/htauk/You-up/raw/master/build/rootless.deb)
-[Rootful](https://github.com/htauk/You-up/raw/master/build/rootful.deb)
+[Rootless](https://github.com/0xdbug/You-up/blob/master/build/rootless.deb)
+[Rootful](https://github.com/0xdbug/You-up/blob/master/build/rootful.deb)
